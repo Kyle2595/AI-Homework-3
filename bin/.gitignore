@@ -1,3 +1,5 @@
 /AdversarialSearchDriver.class
 /GameState.class
 /MinimaxSearch.class
+/TicTacToeState.class
+/NimState.class
