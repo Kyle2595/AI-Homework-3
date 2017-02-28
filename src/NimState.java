@@ -2,11 +2,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NimState implements GameState {
+	
+	private boolean _player1;
+	private boolean _player2;
 
 	@Override
-	public String player() {
-		// TODO Auto-generated method stub
-		return null;
+	public String player() 
+	{
+		// Defines which player has the move in a state.
+		if(_player1 == true && _player2 == false)
+		{
+			return "Player 1";
+		}
+		else if(_player2 == true && _player1 == false)
+		{
+			return "Player 2";
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	@Override

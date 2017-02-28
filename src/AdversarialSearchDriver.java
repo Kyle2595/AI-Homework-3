@@ -21,7 +21,16 @@ public class AdversarialSearchDriver {
 		{
 			// code to do Tic-Tac-Toe here.  the user should be able to specify a state 
 			// of the game to search from. 
+			//GameState initial = new TicTacToeState("Player 1", new int[9]);
 			
+			// Just for testing
+			int[] test = new int[9];
+			test[0] = 1;
+			test[4] = 1;
+			test[8] = 1;
+			TicTacToeState TEST = new TicTacToeState("Player 1", test);
+			TEST.print();
+			TEST.utility("Player 1");
 		}
 		else 
 			System.out.println("Bad choice");
