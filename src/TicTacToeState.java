@@ -406,6 +406,8 @@ public class TicTacToeState implements GameState {
 	
 	public void print()
 	{
+		// Prints just for visual testing 
+		
 		String[] temp = new String[9];
 		
 		for(int i = 0; i < getBoard().length; i++)

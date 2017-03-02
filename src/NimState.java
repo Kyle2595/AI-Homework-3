@@ -2,9 +2,43 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NimState implements GameState {
-	
+
 	private boolean _player1;
 	private boolean _player2;
+	private int _numSticks;
+	private String _winner;
+
+	public int getNumSticks() 
+	{
+		return _numSticks;
+	}
+
+	public void setNumSticks(int _numSticks) 
+	{
+		this._numSticks = _numSticks;
+	}
+
+	public NimState(String player, int sticks)
+	{
+		setNumSticks(sticks);
+		
+		if(player == "Player 1")
+		{
+			//System.out.println("Player 1");
+			_player1 = true;
+			_player2 = false;
+		}
+		else if(player == "Player 2")
+		{
+			//System.out.println("Player 2");
+			_player1 = false;
+			_player2 = true;
+		}
+		else
+		{
+			System.out.println("Bad Player Choice");
+		}
+	}
 
 	@Override
 	public String player() 
@@ -25,27 +59,94 @@ public class NimState implements GameState {
 	}
 
 	@Override
-	public List<String> actions() {
-		List<String> actionList = Arrays.asList("REMOVE 1", "REMOVE 2", "REMOVE 3");
+	public List<String> actions() 
+	{
+		List<String> actionList = Arrays.asList();
+
+		if(getNumSticks() >= 3)
+		{
+			actionList.add("REMOVE 1");
+			actionList.add("REMOVE 2");
+			actionList.add("REMOVE 3");
+		}
+
+		else if(getNumSticks() == 2)
+		{
+			actionList.add("REMOVE 1");
+			actionList.add("REMOVE 2");
+		}
+
+		else if(getNumSticks() == 1)
+		{
+			actionList.add("REMOVE 1");
+		}
+
+		else if(getNumSticks() == 0)
+		{
+			// No possible moves
+		}
+
 		return actionList;
 	}
 
 	@Override
-	public GameState result(String action) {
-		// TODO Auto-generated method stub
-		return null;
+	public GameState result(String action) 
+	{
+		// The transition model, which defines the result of a move
+
+		int current = getNumSticks();
+
+		if(action == "Remove 1")
+		{
+			current = current - 1;
+		}
+
+		else if(action == "Remove 2")
+		{
+			current = current - 2;
+		}
+
+		else if(action == "Remove 3")
+		{
+			current = current - 3;
+		}
+
+		// Players change turns (not sure if here is where I should do this)
+		_player1 = !_player1;
+		_player2 = !_player2;
+
+		GameState result = new NimState(player(), current);
+		return result;
 	}
 
 	@Override
-	public boolean isTerminal() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isTerminal() 
+	{
+		// Is true when the game is over and false otherwise.
+
+		if(getNumSticks() == 0)
+		{
+			_winner = player();
+			return true;
+		}
+
+		else{return false;}
 	}
 
 	@Override
-	public double utility(String player) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double utility(String player) 
+	{
+		// Defines the final numeric value for a game that ends in terminal state S for a player P
+		// Win = 1
+		// Loss = 0
+		// Draw = 1/2
+		
+		if(isTerminal() == true && _winner == player)
+		{
+			System.out.println(player + " WINS!");
+			return 1;
+		}
+		
+		else{return 0;}
 	}
-
 }
