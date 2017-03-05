@@ -1,14 +1,15 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TicTacToeState implements GameState {
 
 	private boolean _player1;
 	private boolean _player2;
-	private int[] _board;
+	private static int[] _board;
 	private String _winner;
 
-	public int[] getBoard() {
+	public static int[] getBoard() {
 		return _board;
 	}
 
@@ -60,8 +61,8 @@ public class TicTacToeState implements GameState {
 	public List<String> actions() 
 	{
 		// Returns the set of legal moves in a state
-		List<String> actionList = Arrays.asList();
-
+		List<String> actionList = new LinkedList<String>(Arrays.asList());
+		
 		if(getBoard()[0] == 0)
 		{
 			actionList.add("TOP LEFT");
@@ -109,7 +110,7 @@ public class TicTacToeState implements GameState {
 		// 2 = O
 
 		//TicTacToeState current = new TicTacToeState(player(), getBoard());
-		
+
 		int[] current = getBoard();
 
 		if(action == "TOP LEFT")
@@ -211,12 +212,13 @@ public class TicTacToeState implements GameState {
 				current[8] = 2;
 			}
 		}
-		
+
 		// Players change turns (not sure if here is where I should do this)
 		_player1 = !_player1;
 		_player2 = !_player2;
-		
+
 		GameState result = new TicTacToeState(player(), current);
+		
 		return result;
 	}
 
@@ -225,27 +227,24 @@ public class TicTacToeState implements GameState {
 	{
 		// Is true when the game is over and false otherwise.
 
-		boolean temp = false;
-		
 		if(getBoard()[0] == 1 && getBoard()[1] == 1 && getBoard()[2] == 1 || getBoard()[0] == 2 && getBoard()[1] == 2 && getBoard()[2] == 2)
 		{
 			// Top across
-			
+
 			if(getBoard()[0] == 1)
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[0] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[3] == 1 && getBoard()[4] == 1 && getBoard()[5] == 1 || getBoard()[3] == 2 && getBoard()[4] == 2 && getBoard()[5] == 2)
+
+		else if(getBoard()[3] == 1 && getBoard()[4] == 1 && getBoard()[5] == 1 || getBoard()[3] == 2 && getBoard()[4] == 2 && getBoard()[5] == 2)
 		{
 			// Middle across
 
@@ -253,17 +252,16 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[3] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[6] == 1 && getBoard()[7] == 1 && getBoard()[8] == 1 || getBoard()[6] == 2 && getBoard()[7] == 2 && getBoard()[8] == 2)
+
+		else if(getBoard()[6] == 1 && getBoard()[7] == 1 && getBoard()[8] == 1 || getBoard()[6] == 2 && getBoard()[7] == 2 && getBoard()[8] == 2)
 		{
 			// Bottom across
 
@@ -271,17 +269,16 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[6] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[0] == 1 && getBoard()[3] == 1 && getBoard()[6] == 1 || getBoard()[0] == 2 && getBoard()[3] == 2 && getBoard()[6] == 2)
+
+		else if(getBoard()[0] == 1 && getBoard()[3] == 1 && getBoard()[6] == 1 || getBoard()[0] == 2 && getBoard()[3] == 2 && getBoard()[6] == 2)
 		{
 			// Left down
 
@@ -289,17 +286,16 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[0] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[1] == 1 && getBoard()[4] == 1 && getBoard()[7] == 1 || getBoard()[1] == 2 && getBoard()[4] == 2 && getBoard()[7] == 2)
+
+		else if(getBoard()[1] == 1 && getBoard()[4] == 1 && getBoard()[7] == 1 || getBoard()[1] == 2 && getBoard()[4] == 2 && getBoard()[7] == 2)
 		{
 			// Middle down
 
@@ -307,17 +303,16 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[1] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[2] == 1 && getBoard()[5] == 1 && getBoard()[8] == 1 || getBoard()[2] == 2 && getBoard()[5] == 2 && getBoard()[8] == 2)
+
+		else if(getBoard()[2] == 1 && getBoard()[5] == 1 && getBoard()[8] == 1 || getBoard()[2] == 2 && getBoard()[5] == 2 && getBoard()[8] == 2)
 		{
 			// Right down
 
@@ -325,17 +320,16 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[2] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[0] == 1 && getBoard()[4] == 1 && getBoard()[8] == 1 || getBoard()[0] == 2 && getBoard()[4] == 2 && getBoard()[8] == 2)
+
+		else if(getBoard()[0] == 1 && getBoard()[4] == 1 && getBoard()[8] == 1 || getBoard()[0] == 2 && getBoard()[4] == 2 && getBoard()[8] == 2)
 		{
 			// Diagonal left
 
@@ -343,17 +337,16 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[0] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
 
-		if(getBoard()[2] == 1 && getBoard()[4] == 1 && getBoard()[6] == 1 || getBoard()[2] == 2 && getBoard()[4] == 2 && getBoard()[6] == 2)
+		else if(getBoard()[2] == 1 && getBoard()[4] == 1 && getBoard()[6] == 1 || getBoard()[2] == 2 && getBoard()[4] == 2 && getBoard()[6] == 2)
 		{
 			// Diagonal right
 
@@ -361,24 +354,22 @@ public class TicTacToeState implements GameState {
 			{
 				_winner = "Player 1";
 			}
-			
+
 			if(getBoard()[2] == 2)
 			{
 				_winner = "Player 2";
 			}
-			
-			temp = true;
+
 			return true;
 		}
-		
-		if(getBoard()[0] != 0 && getBoard()[1] != 0 && getBoard()[2] != 0 && getBoard()[3] != 0 && getBoard()[4] != 0 && getBoard()[5] != 0 && getBoard()[6] != 0 && getBoard()[7] != 0 && getBoard()[8] != 0 && temp == false)
+
+		else if(getBoard()[0] != 0 && getBoard()[1] != 0 && getBoard()[2] != 0 && getBoard()[3] != 0 && getBoard()[4] != 0 && getBoard()[5] != 0 && getBoard()[6] != 0 && getBoard()[7] != 0 && getBoard()[8] != 0)
 		{
-			// Temp is used to make sure the method doesn't get confused if a player is to win on the last possible move
 			// Nobody wins
 			_winner = "draw";
 			return true;
 		}
-		
+
 		else{return false;}
 	}
 
@@ -386,52 +377,58 @@ public class TicTacToeState implements GameState {
 	public double utility(String player) 
 	{
 		// Defines the final numeric value for a game that ends in terminal state S for a player P
-		// Win = 1
-		// Loss = 0
-		// Draw = 1/2
-		if(isTerminal() == true && _winner == player)
+		// Player 1 = 1
+		// Draw = 0
+		// Player 2 = -1
+		
+		if(isTerminal() == true && _winner == "Player 1")
 		{
-			System.out.println(player + " WINS!");
+			System.out.println(_winner + " WINS!");
 			return 1;
 		}
-		
-		else if(isTerminal() == true && _winner == "draw")
+
+		else if(isTerminal() == true && _winner == "Player 2")
+		{
+			System.out.println(_winner + " WINS!");
+			return -1;
+		}
+
+		else
 		{
 			System.out.println("It's a draw");
-			return 0.5;
+			return 0;
 		}
-		
-		else{return 0;}
 	}
-	
-	public void print()
+
+	public static void print()
 	{
 		// Prints just for visual testing 
-		
+
 		String[] temp = new String[9];
-		
+
 		for(int i = 0; i < getBoard().length; i++)
 		{
 			if(getBoard()[i] == 0)
 			{
 				temp[i] = " ";
 			}
-			
+
 			if(getBoard()[i] == 1)
 			{
 				temp[i] = "X";
 			}
-			
+
 			if(getBoard()[i] == 2)
 			{
 				temp[i] = "O";
 			}
 		}
-		
+
 		System.out.print(temp[0]); System.out.print("|"); System.out.print(temp[1]); System.out.print("|"); System.out.print(temp[2]); System.out.println();
 		System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.println();
 		System.out.print(temp[3]); System.out.print("|"); System.out.print(temp[4]); System.out.print("|"); System.out.print(temp[5]); System.out.println();
 		System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.println();
 		System.out.print(temp[6]); System.out.print("|"); System.out.print(temp[7]); System.out.print("|"); System.out.print(temp[8]); System.out.println();
+		System.out.println();
 	}
 }

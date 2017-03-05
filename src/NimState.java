@@ -21,7 +21,7 @@ public class NimState implements GameState {
 	public NimState(String player, int sticks)
 	{
 		setNumSticks(sticks);
-		
+
 		if(player == "Player 1")
 		{
 			//System.out.println("Player 1");
@@ -137,16 +137,22 @@ public class NimState implements GameState {
 	public double utility(String player) 
 	{
 		// Defines the final numeric value for a game that ends in terminal state S for a player P
-		// Win = 1
-		// Loss = 0
-		// Draw = 1/2
-		
-		if(isTerminal() == true && _winner == player)
+		// Player 1 = 1
+		// Draw = 0
+		// Player 2 = -1
+
+		if(isTerminal() == true && player == "Player 1")
 		{
 			System.out.println(player + " WINS!");
 			return 1;
 		}
 		
+		else if(isTerminal() == true && player == "Player 2")
+		{
+			System.out.println(player + " WINS!");
+			return -1;
+		}
+
 		else{return 0;}
 	}
 }

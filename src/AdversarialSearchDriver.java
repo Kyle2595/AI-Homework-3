@@ -23,16 +23,26 @@ public class AdversarialSearchDriver {
 		{
 			// code to do Tic-Tac-Toe here.  the user should be able to specify a state 
 			// of the game to search from. 
-			GameState initial = new TicTacToeState("Player 1", new int[9]);
+			
+			//GameState initial = new TicTacToeState("Player 1", new int[9]);
 			
 			// Just for testing
-//			int[] test = new int[9];
-//			test[0] = 1;
-//			test[4] = 1;
-//			test[8] = 1;
-//			TicTacToeState TEST = new TicTacToeState("Player 1", test);
-//			TEST.print();
-//			TEST.utility("Player 1");
+			int[] test = new int[9];
+			test[0] = 1;
+			test[1] = 0;
+			test[2] = 0;
+			test[3] = 1;
+			test[4] = 2;
+			test[5] = 2;
+			test[6] = 0;
+			test[7] = 0;
+			test[8] = 0;
+			GameState TEST = new TicTacToeState("Player 1", test);
+			
+			String MinMaxResult = MinimaxSearch.minimaxDecisionMax(TEST);
+			TicTacToeState.print();
+			//GameState TestResult = TEST.result(MinMaxResult);
+			
 		}
 		else 
 			System.out.println("Bad choice");
