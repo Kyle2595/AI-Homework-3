@@ -1,0 +1,18 @@
+README
+
+The code will output the best move for the current state.  
+
+As per the instructions, if you were to play Nim and input the number of sticks
+as 3, the program will tell you to remove 2 sticks, leaving your opponent with 
+the last stick to pick up.  Therefore you win.
+
+Tic Tac Toe still has some errors, it makes moves even after a player wins.
+It will iterate through all the possible solutions correctly in MinmaxSearch,
+but it will print the final state, not just the next state.
+
+A general strategy for Nim is that player 2 can only win if n mod 4 = 1;
+So as player 1, you want to make sure you never let the number of sticks mod 4
+equal to 1.
+
+For Nim' when the player who picks the last stick wins, you want to make sure
+the total number of sticks n mod 4 = 0 if you want to win.
