@@ -52,8 +52,8 @@ public class AdversarialSearchDriver {
 				TEST = TEST.result(MinMaxResult);
 				TEST.print();
 			}
-
 		}
+		
 		else 
 			System.out.println("Bad choice");
 	}

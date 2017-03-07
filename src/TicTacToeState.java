@@ -222,139 +222,107 @@ public class TicTacToeState implements GameState {
 	{
 		// Is true when the game is over and false otherwise.
 
-		if(getBoard()[0] == 1 && getBoard()[1] == 1 && getBoard()[2] == 1 || getBoard()[0] == 2 && getBoard()[1] == 2 && getBoard()[2] == 2)
+		if(getBoard()[0] == 1 && getBoard()[1] == 1 && getBoard()[2] == 1)
 		{
 			// Top across
-
-			if(getBoard()[0] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[0] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[0] == 2 && getBoard()[1] == 2 && getBoard()[2] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[3] == 1 && getBoard()[4] == 1 && getBoard()[5] == 1 || getBoard()[3] == 2 && getBoard()[4] == 2 && getBoard()[5] == 2)
+		else if(getBoard()[3] == 1 && getBoard()[4] == 1 && getBoard()[5] == 1)
 		{
 			// Middle across
-
-			if(getBoard()[3] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[3] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[3] == 2 && getBoard()[4] == 2 && getBoard()[5] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[6] == 1 && getBoard()[7] == 1 && getBoard()[8] == 1 || getBoard()[6] == 2 && getBoard()[7] == 2 && getBoard()[8] == 2)
+		else if(getBoard()[6] == 1 && getBoard()[7] == 1 && getBoard()[8] == 1)
 		{
 			// Bottom across
-
-			if(getBoard()[6] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[6] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[6] == 2 && getBoard()[7] == 2 && getBoard()[8] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[0] == 1 && getBoard()[3] == 1 && getBoard()[6] == 1 || getBoard()[0] == 2 && getBoard()[3] == 2 && getBoard()[6] == 2)
+		else if(getBoard()[0] == 1 && getBoard()[3] == 1 && getBoard()[6] == 1)
 		{
 			// Left down
-
-			if(getBoard()[0] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[0] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[0] == 2 && getBoard()[3] == 2 && getBoard()[6] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[1] == 1 && getBoard()[4] == 1 && getBoard()[7] == 1 || getBoard()[1] == 2 && getBoard()[4] == 2 && getBoard()[7] == 2)
+		else if(getBoard()[1] == 1 && getBoard()[4] == 1 && getBoard()[7] == 1)
 		{
 			// Middle down
-
-			if(getBoard()[1] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[1] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[1] == 2 && getBoard()[4] == 2 && getBoard()[7] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[2] == 1 && getBoard()[5] == 1 && getBoard()[8] == 1 || getBoard()[2] == 2 && getBoard()[5] == 2 && getBoard()[8] == 2)
+		else if(getBoard()[2] == 1 && getBoard()[5] == 1 && getBoard()[8] == 1)
 		{
 			// Right down
-
-			if(getBoard()[2] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[2] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[2] == 2 && getBoard()[5] == 2 && getBoard()[8] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[0] == 1 && getBoard()[4] == 1 && getBoard()[8] == 1 || getBoard()[0] == 2 && getBoard()[4] == 2 && getBoard()[8] == 2)
+		else if(getBoard()[0] == 1 && getBoard()[4] == 1 && getBoard()[8] == 1)
 		{
 			// Diagonal left
-
-			if(getBoard()[0] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[0] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[0] == 2 && getBoard()[4] == 2 && getBoard()[8] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
-		else if(getBoard()[2] == 1 && getBoard()[4] == 1 && getBoard()[6] == 1 || getBoard()[2] == 2 && getBoard()[4] == 2 && getBoard()[6] == 2)
+		else if(getBoard()[2] == 1 && getBoard()[4] == 1 && getBoard()[6] == 1)
 		{
 			// Diagonal right
-
-			if(getBoard()[2] == 1)
-			{
-				_winner = "Player 1";
-			}
-
-			if(getBoard()[2] == 2)
-			{
-				_winner = "Player 2";
-			}
-
+			_winner = "Player 1";
+			return true;
+		}
+		
+		else if(getBoard()[2] == 2 && getBoard()[4] == 2 && getBoard()[6] == 2)
+		{
+			_winner = "Player 2";
 			return true;
 		}
 
