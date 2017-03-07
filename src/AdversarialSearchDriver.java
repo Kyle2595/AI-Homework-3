@@ -18,6 +18,9 @@ public class AdversarialSearchDriver {
 			
 			NimState TEST = new NimState("Player 1", sticks);
 			
+			String MinMaxResult = MinimaxSearch.minimaxDecisionMax(TEST);
+			System.out.println(MinMaxResult);
+			
 		}
 		else if (choice == 2)
 		{
@@ -29,19 +32,20 @@ public class AdversarialSearchDriver {
 			// Just for testing
 			int[] test = new int[9];
 			test[0] = 1;
-			test[1] = 0;
+			test[1] = 2;
 			test[2] = 0;
-			test[3] = 1;
-			test[4] = 2;
+			test[3] = 0;
+			test[4] = 1;
 			test[5] = 2;
 			test[6] = 0;
 			test[7] = 0;
 			test[8] = 0;
+			
 			GameState TEST = new TicTacToeState("Player 1", test);
+			TicTacToeState.print();
 			
 			String MinMaxResult = MinimaxSearch.minimaxDecisionMax(TEST);
-			TicTacToeState.print();
-			//GameState TestResult = TEST.result(MinMaxResult);
+			System.out.println(MinMaxResult);
 			
 		}
 		else 

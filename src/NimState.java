@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NimState implements GameState {
@@ -61,7 +62,7 @@ public class NimState implements GameState {
 	@Override
 	public List<String> actions() 
 	{
-		List<String> actionList = Arrays.asList();
+		List<String> actionList = new LinkedList<String>(Arrays.asList());
 
 		if(getNumSticks() >= 3)
 		{
@@ -96,17 +97,17 @@ public class NimState implements GameState {
 
 		int current = getNumSticks();
 
-		if(action == "Remove 1")
+		if(action == "REMOVE 1")
 		{
 			current = current - 1;
 		}
 
-		else if(action == "Remove 2")
+		else if(action == "REMOVE 2")
 		{
 			current = current - 2;
 		}
 
-		else if(action == "Remove 3")
+		else if(action == "REMOVE 3")
 		{
 			current = current - 3;
 		}
@@ -124,7 +125,7 @@ public class NimState implements GameState {
 	{
 		// Is true when the game is over and false otherwise.
 
-		if(getNumSticks() == 0)
+		if(getNumSticks() == 1)
 		{
 			_winner = player();
 			return true;
@@ -140,19 +141,34 @@ public class NimState implements GameState {
 		// Player 1 = 1
 		// Draw = 0
 		// Player 2 = -1
-
-		if(isTerminal() == true && player == "Player 1")
+		
+		int val = 0;
+		
+		if(player == "Player 1")
 		{
-			System.out.println(player + " WINS!");
-			return 1;
+			if(_winner == "Player 1")
+			{
+				val = 1;
+			}
+			
+			else if(_winner == "Player 2")
+			{
+				val = -1;
+			}
 		}
 		
-		else if(isTerminal() == true && player == "Player 2")
+		if(player == "Player 2")
 		{
-			System.out.println(player + " WINS!");
-			return -1;
+			if(_winner == "Player 2")
+			{
+				val = 1;
+			}
+			
+			else if(_winner == "Player 1")
+			{
+				val = -1;
+			}
 		}
-
-		else{return 0;}
+		return val;
 	}
 }

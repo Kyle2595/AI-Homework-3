@@ -14,20 +14,18 @@ public class TicTacToeState implements GameState {
 	}
 
 	public void setBoard(int[] _board) {
-		this._board = _board;
+		TicTacToeState._board = _board;
 	}
 
 	public TicTacToeState(String player, int[] board)
 	{
 		if(player == "Player 1")
 		{
-			//System.out.println("Player 1");
 			_player1 = true;
 			_player2 = false;
 		}
 		else if(player == "Player 2")
 		{
-			//System.out.println("Player 2");
 			_player1 = false;
 			_player2 = true;
 		}
@@ -103,7 +101,7 @@ public class TicTacToeState implements GameState {
 	}
 
 	@Override
-	public GameState result(String action) 
+	public GameState result(String action)
 	{
 		// The transition model, which defines the result of a move
 		// 1 = X
@@ -218,7 +216,6 @@ public class TicTacToeState implements GameState {
 		_player2 = !_player2;
 
 		GameState result = new TicTacToeState(player(), current);
-		
 		return result;
 	}
 
@@ -381,23 +378,35 @@ public class TicTacToeState implements GameState {
 		// Draw = 0
 		// Player 2 = -1
 		
-		if(isTerminal() == true && _winner == "Player 1")
+		int val = 0;
+		
+		if(player == "Player 1")
 		{
-			System.out.println(_winner + " WINS!");
-			return 1;
+			if(_winner == "Player 1")
+			{
+				val = 1;
+			}
+			
+			else if(_winner == "Player 2")
+			{
+				val = -1;
+			}
 		}
-
-		else if(isTerminal() == true && _winner == "Player 2")
+		
+		if(player == "Player 2")
 		{
-			System.out.println(_winner + " WINS!");
-			return -1;
+			if(_winner == "Player 2")
+			{
+				val = 1;
+			}
+			
+			else if(_winner == "Player 1")
+			{
+				val = -1;
+			}
 		}
-
-		else
-		{
-			System.out.println("It's a draw");
-			return 0;
-		}
+		
+		return val;
 	}
 
 	public static void print()
