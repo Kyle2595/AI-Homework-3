@@ -142,33 +142,45 @@ public class NimState implements GameState {
 		// Draw = 0
 		// Player 2 = -1
 		
-		int val = 0;
-		
-		if(player == "Player 1")
+		double val = 0;
+		if(this.isTerminal())
 		{
-			if(_winner == "Player 1")
+			if(player == "Player 1")
 			{
-				val = 1;
+				if(_winner.equalsIgnoreCase("Player 1"))
+				{
+					val = 1;
+				}
+				
+				else if(_winner.equalsIgnoreCase("Player 2"))
+				{
+					val = -1;
+				}
 			}
 			
-			else if(_winner == "Player 2")
+			if(player == "Player 2")
 			{
-				val = -1;
+				if(_winner.equalsIgnoreCase("Player 2"))
+				{
+					val = 1;
+				}
+				
+				else if(_winner.equalsIgnoreCase("Player 1"))
+				{
+					val = -1;
+				}
 			}
+			return val;
 		}
-		
-		if(player == "Player 2")
+		else
 		{
-			if(_winner == "Player 2")
-			{
-				val = 1;
-			}
-			
-			else if(_winner == "Player 1")
-			{
-				val = -1;
-			}
+			return (Double) null;
 		}
-		return val;
+	}
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -7,16 +7,32 @@ public class MinimaxSearch {
 		// Returns an action
 
 		String result = null;
-		double resultValue = Double.NEGATIVE_INFINITY;
+		double negitiveResultValue = Double.NEGATIVE_INFINITY;
+		double positiveResultValue = Double.POSITIVE_INFINITY;
 		String player = state.player();
 		
 		for (String action : state.actions())
 		{
 			double value = minValue(state.result(action), player);
-			if (value > resultValue) 
+			
+			if(player.equalsIgnoreCase("Player 2"))
 			{
-				result = action;
-				resultValue = value;
+				// Maximize value
+				if (value > negitiveResultValue) 
+				{
+					result = action;
+					negitiveResultValue = value;
+				}
+			}
+			
+			if(player.equalsIgnoreCase("Player 1"))
+			{
+				// Minimize value
+				if (value < positiveResultValue) 
+				{
+					result = action;
+					negitiveResultValue = value;
+				}
 			}
 		}
 		return result;

@@ -6,5 +6,6 @@ public interface GameState {
 	GameState result(String action);
 	boolean isTerminal();
 	double utility(String player);  
+	void print();
 	// utility should only need to work for terminal game states
 }

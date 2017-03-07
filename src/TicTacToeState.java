@@ -107,8 +107,6 @@ public class TicTacToeState implements GameState {
 		// 1 = X
 		// 2 = O
 
-		//TicTacToeState current = new TicTacToeState(player(), getBoard());
-
 		int[] current = getBoard();
 
 		if(action == "TOP LEFT")
@@ -378,38 +376,49 @@ public class TicTacToeState implements GameState {
 		// Draw = 0
 		// Player 2 = -1
 		
-		int val = 0;
-		
-		if(player == "Player 1")
+		double val = 0;
+		if(this.isTerminal())
 		{
-			if(_winner == "Player 1")
+			if(player == "Player 1")
 			{
-				val = 1;
+				if(_winner.equalsIgnoreCase("Player 1"))
+				{
+					val = 1;
+				}
+				
+				else if(_winner.equalsIgnoreCase("Player 2"))
+				{
+					val = -1;
+				}
 			}
 			
-			else if(_winner == "Player 2")
+			if(player == "Player 2")
 			{
-				val = -1;
-			}
-		}
-		
-		if(player == "Player 2")
-		{
-			if(_winner == "Player 2")
-			{
-				val = 1;
+				if(_winner.equalsIgnoreCase("Player 2"))
+				{
+					val = 1;
+				}
+				
+				else if(_winner.equalsIgnoreCase("Player 1"))
+				{
+					val = -1;
+				}
 			}
 			
-			else if(_winner == "Player 1")
+			else if(_winner.equalsIgnoreCase("draw"))
 			{
-				val = -1;
+				val = 0;
 			}
+			
+			return val;
 		}
-		
-		return val;
+		else
+		{
+			return (Double) null;
+		}
 	}
 
-	public static void print()
+	public void print()
 	{
 		// Prints just for visual testing 
 
@@ -433,6 +442,7 @@ public class TicTacToeState implements GameState {
 			}
 		}
 
+		System.out.println();
 		System.out.print(temp[0]); System.out.print("|"); System.out.print(temp[1]); System.out.print("|"); System.out.print(temp[2]); System.out.println();
 		System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.println();
 		System.out.print(temp[3]); System.out.print("|"); System.out.print(temp[4]); System.out.print("|"); System.out.print(temp[5]); System.out.println();
