@@ -16,9 +16,10 @@ public class AdversarialSearchDriver {
 			int sticks = input.nextInt();
 			// code to do minimax on Nim with the chosen number of sticks here
 
-			NimState TEST = new NimState("Player 1", sticks);
+			// The boolean value in the constructor is for Nim'
+			NimState initial = new NimState("Player 1", sticks, true);
 
-			String MinMaxResult = MinimaxSearch.minimaxDecisionMax(TEST);
+			String MinMaxResult = MinimaxSearch.minimaxDecisionMax(initial);
 			System.out.println(MinMaxResult);
 
 		}
@@ -27,34 +28,38 @@ public class AdversarialSearchDriver {
 			// code to do Tic-Tac-Toe here.  the user should be able to specify a state 
 			// of the game to search from. 
 
-			//GameState initial = new TicTacToeState("Player 1", new int[9]);
-
-			// Just for testing
+			// Defines the starting board
+			// 0 = blank
+			// 1 = X
+			// 2 = O
+			
 			int[] test = new int[9];
-			test[0] = 2;
-			test[1] = 2;
-			test[2] = 1;
+			test[0] = 1;
+			test[1] = 1;
+			test[2] = 0;
 			test[3] = 0;
-			test[4] = 1;
+			test[4] = 0;
 			test[5] = 0;
 			test[6] = 0;
-			test[7] = 0;
-			test[8] = 0;
+			test[7] = 2;
+			test[8] = 2;
 
-			GameState TEST = new TicTacToeState("Player 1", test);
-			TEST.print();
+			GameState initial = new TicTacToeState("Player 1", test);
+			System.out.println("Initial state:");
+			initial.print();
 
-			while(TEST.isTerminal() == false)
+			while(initial.isTerminal() == false)
 			{
-				String MinMaxResult = MinimaxSearch.minimaxDecisionMax(TEST);
-				System.out.println(MinMaxResult);
+				String MinMaxResult = MinimaxSearch.minimaxDecisionMax(initial);
+				//System.out.println(MinMaxResult);
+				
+				System.out.println("Next Move:");
 
-				TEST = TEST.result(MinMaxResult);
-				TEST.print();
+				initial = initial.result(MinMaxResult);
+				initial.print();
 			}
 		}
 		
-		else 
-			System.out.println("Bad choice");
+		else {System.out.println("Bad choice");}
 	}
 }

@@ -390,32 +390,32 @@ public class TicTacToeState implements GameState {
 	{
 		// Prints just for visual testing 
 
-		String[] temp = new String[9];
+		String[] printBoard = new String[9];
 
 		for(int i = 0; i < getBoard().length; i++)
 		{
 			if(getBoard()[i] == 0)
 			{
-				temp[i] = " ";
+				printBoard[i] = " ";
 			}
 
 			if(getBoard()[i] == 1)
 			{
-				temp[i] = "X";
+				printBoard[i] = "X";
 			}
 
 			if(getBoard()[i] == 2)
 			{
-				temp[i] = "O";
+				printBoard[i] = "O";
 			}
 		}
 
 		System.out.println();
-		System.out.print(temp[0]); System.out.print("|"); System.out.print(temp[1]); System.out.print("|"); System.out.print(temp[2]); System.out.println();
+		System.out.print(printBoard[0]); System.out.print("|"); System.out.print(printBoard[1]); System.out.print("|"); System.out.print(printBoard[2]); System.out.println();
 		System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.println();
-		System.out.print(temp[3]); System.out.print("|"); System.out.print(temp[4]); System.out.print("|"); System.out.print(temp[5]); System.out.println();
+		System.out.print(printBoard[3]); System.out.print("|"); System.out.print(printBoard[4]); System.out.print("|"); System.out.print(printBoard[5]); System.out.println();
 		System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.print("-"); System.out.println();
-		System.out.print(temp[6]); System.out.print("|"); System.out.print(temp[7]); System.out.print("|"); System.out.print(temp[8]); System.out.println();
+		System.out.print(printBoard[6]); System.out.print("|"); System.out.print(printBoard[7]); System.out.print("|"); System.out.print(printBoard[8]); System.out.println();
 		System.out.println();
 	}
 }

@@ -71,9 +71,7 @@ public class MinimaxSearch {
 		
 		else
 		{
-			double value = Double.NEGATIVE_INFINITY;
-			//System.out.println(state.actions());
-			
+			double value = Double.NEGATIVE_INFINITY;			
 			for (String action : state.actions())
 			{
 				value = Math.max(value, minValue(state.result(action), player));
@@ -81,10 +79,4 @@ public class MinimaxSearch {
 			return value;
 		}
 	}
-
-//	public static void main(String[] args) 
-//	{
-//		// TODO Auto-generated method stub
-//		// could be useful in testing Minimax search code
-//	}
 }

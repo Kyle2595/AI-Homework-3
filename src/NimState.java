@@ -8,6 +8,7 @@ public class NimState implements GameState {
 	private boolean _player2;
 	private int _numSticks;
 	private String _winner;
+	private boolean _prime;
 
 	public int getNumSticks() 
 	{
@@ -19,9 +20,18 @@ public class NimState implements GameState {
 		this._numSticks = _numSticks;
 	}
 
-	public NimState(String player, int sticks)
+	public NimState(String player, int sticks, boolean prime)
 	{
 		setNumSticks(sticks);
+		if(prime == true)
+		{
+			_prime = true;
+		}
+		
+		if(prime == false)
+		{
+			_prime = false;
+		}
 
 		if(player == "Player 1")
 		{
@@ -29,12 +39,14 @@ public class NimState implements GameState {
 			_player1 = true;
 			_player2 = false;
 		}
+		
 		else if(player == "Player 2")
 		{
 			//System.out.println("Player 2");
 			_player1 = false;
 			_player2 = true;
 		}
+		
 		else
 		{
 			System.out.println("Bad Player Choice");
@@ -116,7 +128,7 @@ public class NimState implements GameState {
 		_player1 = !_player1;
 		_player2 = !_player2;
 
-		GameState result = new NimState(player(), current);
+		GameState result = new NimState(player(), current, _prime);
 		return result;
 	}
 
@@ -124,14 +136,26 @@ public class NimState implements GameState {
 	public boolean isTerminal() 
 	{
 		// Is true when the game is over and false otherwise.
-
-		if(getNumSticks() == 1)
+		
+		if(_prime == false)
 		{
-			_winner = player();
-			return true;
+			if(getNumSticks() == 1)
+			{
+				_winner = player();
+				return true;
+			}
 		}
-
-		else{return false;}
+		
+		else if(_prime == true)
+		{
+			if(getNumSticks() == 0)
+			{
+				_winner = player();
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	@Override
